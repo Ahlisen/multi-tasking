@@ -36,6 +36,7 @@ previous_state = state;
 dir = 0;
 battery = 0;
 battery_max = 3;
+rotation = 270;
 xx = 0;
 yy = 0;
 axis_hor = 0;
@@ -104,13 +105,15 @@ script_execute(state);
             <kind>1</kind>
             <string>///Check collision of prey or chaser
 if (other.team != team) {
-    if(other.type == PREY &amp;&amp; type == CHASER &amp;&amp; !o_level.game_over) {
+    if(other.type == PREY &amp;&amp; type == CHASER &amp;&amp; state != state_rotate &amp;&amp; !o_level.game_over) {
         with(other) {
             instance_destroy();
         }
         audio_play_sound(snd_death, 10, false);
         o_level.scores[team]++;
-        o_level.game_over = true;
+        if(instance_number(o_mover) == o_settings.teams+1) {
+            o_level.game_over = true;
+        }
     }
 }
 </string>

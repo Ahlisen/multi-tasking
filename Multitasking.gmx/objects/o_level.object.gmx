@@ -27,8 +27,9 @@
             <kind>1</kind>
             <string>///Persistant variables
 game_over = false;
-for(i = 0; i &lt; o_settings.teams; i++) {
-    scores[i] = 0;
+for(team = 0; team &lt; o_settings.teams; team++) {
+    scores[team] = 0;
+    gamepad_set_axis_deadzone(team, .25);
 }
 
 display_set_gui_size(room_width,room_height);
@@ -124,9 +125,10 @@ repeat(400) {
 //Create safe spawn areas
 var my = height div 2;
 var mx = width div 2;
-for (var step = 1; step &lt; width-1; step++) {
-    grid[# step, my] = FLOOR;
-    grid[# step, my+1] = FLOOR;
+for (var x_step = mx-2; x_step &lt; mx+2; x_step++) {
+    for (var y_step = my-2; y_step &lt; my+2; y_step++) {
+        grid[# x_step, y_step] = FLOOR;
+    }
 }
 /*
 for (var step = mx; step &lt; mx+1; step++) {
@@ -175,18 +177,21 @@ for (var yy = 0; yy &lt; height; yy++) {
           <argument>
             <kind>1</kind>
             <string>///Create players
-
 var width = room_width div CELL_WIDTH;
 var height = room_height div CELL_HEIGHT;
-var middle_y = height div 2;
+var middle_x = (width div 2)-1;
+var middle_y = (height div 2)-1;
+var color_offset = 0;
+var need_keyboard = o_settings.teams - o_settings.controllers;
+var input = get_input_controller;
 
-var color_offset = irandom(90);
-create_player(1, middle_y, CHASER, 0, color_offset);
-create_player(1, middle_y+1, PREY, 0, color_offset);
-color_offset += irandom(30);
-create_player(width-2, middle_y, PREY, 1, color_offset);
-var second = create_player(width-2, middle_y+1, CHASER, 1, color_offset);
-second.image_angle += 180;
+for(team = 0; team &lt; o_settings.teams; team++) {
+    color_offset += irandom(30);
+    if(team == o_settings.teams-1 &amp;&amp; need_keyboard &gt; 0) {input = get_input_keyboard;}
+    var prey = create_player(middle_x+(team mod 2), middle_y+(team div 2), PREY, team, input, color_offset);
+    var chaser = create_player(middle_x+(team mod 2), middle_y+(team div 2), CHASER, team, input, color_offset);
+    chaser.image_angle = 270;
+}
 
 //Reset game
 game_over = false;
