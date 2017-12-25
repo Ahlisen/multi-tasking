@@ -113,6 +113,9 @@ if (other.team != team) {
         o_level.scores[team]++;
         if(instance_number(o_mover) == o_settings.teams+1) {
             o_level.game_over = true;
+            with(o_level) {
+                check_winner();
+            }
         }
     }
 }

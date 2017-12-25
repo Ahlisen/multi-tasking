@@ -30,6 +30,7 @@
     <script>scripts\smoothstep.gml</script>
     <script>scripts\grid_place_free.gml</script>
     <script>scripts\create_player.gml</script>
+    <script>scripts\check_winner.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_main</font>
