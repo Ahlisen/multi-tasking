@@ -23,6 +23,7 @@
     <script>scripts\state_input.gml</script>
     <script>scripts\state_charging.gml</script>
     <script>scripts\state_collision.gml</script>
+    <script>scripts\state_rotate.gml</script>
     <script>scripts\get_controller_input.gml</script>
     <script>scripts\smoothstep.gml</script>
     <script>scripts\grid_place_meeting.gml</script>

@@ -5,4 +5,8 @@ if(animation != 1) {
     animation += animation_speed;
 } else {
     state = previous_state;
+    if(type == PREY && battery == 0) {
+        move_length = 1;
+        image_blend = color;
+    }
 }

@@ -33,11 +33,14 @@ type = CHASER;
 state = state_input;
 previous_state = state;
 dir = 0;
+battery = 0;
+battery_max = 3;
 xx = 0;
 yy = 0;
 axis_hor = 0;
 axis_ver = 0;
-charge_input = 0;
+special_input = 0;
+move_length = 1;
 animation = 0;
 animation_speed_std = 0.05;
 animation_speed = animation_speed_std;
@@ -73,8 +76,9 @@ bounce_size_y = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///execute state
+            <string>///input, execute state
 script_execute(state);
+
 </string>
           </argument>
         </arguments>

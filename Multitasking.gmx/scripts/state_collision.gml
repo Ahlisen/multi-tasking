@@ -8,5 +8,7 @@ if(animation != 1) {
 } else {
     state = state_input;
     previous_state = state;
-    animation_speed = animation_speed_std;
+    if(type == CHASER) {
+        animation_speed = animation_speed_std;
+    }
 }

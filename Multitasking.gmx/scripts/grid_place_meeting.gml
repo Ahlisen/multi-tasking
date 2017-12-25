@@ -3,4 +3,4 @@ var xx = argument0;
 var yy = argument1;
 
 // check for x meeting
-return (o_level.grid[# xx, yy] == WALL);
+return (o_level.grid[# xx, yy] == WALL || o_level.grid[# xx, yy] == VOID);
