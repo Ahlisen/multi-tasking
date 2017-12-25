@@ -195,6 +195,7 @@ for(team = 0; team &lt; o_settings.teams; team++) {
     color_offset += irandom(30);
     if(team == o_settings.teams-1 &amp;&amp; need_keyboard &gt; 0) {input = get_input_keyboard;}
     var prey = create_player(middle_x+(team mod 2), middle_y+(team div 2), PREY, team, input, color_offset);
+    prey.collision_sound = snd_thump;
     var chaser = create_player(middle_x+(team mod 2), middle_y+(team div 2), CHASER, team, input, color_offset);
     chaser.rotation = 270;
     team_colors[team] = chaser.color_charge;
@@ -250,30 +251,6 @@ if(game_over) {
     draw_set_colour(c_white);
     draw_text(room_width/2, room_height-16, "&lt; Press Spacebar to Continue &gt;")
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="9" enumb="32">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///restart room
-room_restart();
 </string>
           </argument>
         </arguments>

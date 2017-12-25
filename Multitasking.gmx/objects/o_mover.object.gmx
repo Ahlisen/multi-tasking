@@ -32,6 +32,7 @@ color_charge = c_white;
 type = CHASER;
 state = state_input;
 input_method = get_input_controller;
+collision_sound = snd_bounce;
 previous_state = state;
 dir = 0;
 battery = 0;
@@ -141,7 +142,8 @@ if (other.team != team) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_sprite_ext(sprite_index, image_index, x+offset_x, y+offset_y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
+            <string>///Draw self
+draw_sprite_ext(sprite_index, image_index, x+offset_x, y+offset_y, image_xscale, image_yscale, image_angle, image_blend, image_alpha);
 </string>
           </argument>
         </arguments>

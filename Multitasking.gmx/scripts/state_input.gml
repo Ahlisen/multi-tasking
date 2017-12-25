@@ -23,6 +23,7 @@ if(axis_hor != 0 || axis_ver != 0) {
         yy = check_y;
         if(battery != 0 && type == PREY) {
             battery--;
+            audio_play_sound(snd_rubber, 5, false);
         }
         if (special_input && type == CHASER){
             previous_state = state_charging;
@@ -39,13 +40,13 @@ if(axis_hor != 0 || axis_ver != 0) {
         bounce_size_x = power(0.9, move_length);
         bounce_size_y = power(1.05, move_length);
         state = state_collision;
-        audio_play_sound(snd_bounce,0,false);
+        audio_play_sound(collision_sound,0,false);
     }
     image_angle = dir;
 } else {
     if(special_input && type == PREY && battery == 0) {
         state = state_rotate;
-        audio_play_sound(snd_charge, 5, false);
+        audio_play_sound(snd_blip, 5, false);
         battery++; //Quick fix for 3 rotations
     }
 }

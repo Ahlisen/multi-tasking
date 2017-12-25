@@ -27,7 +27,6 @@
             <kind>1</kind>
             <string>///Persistant Variables
 teams = 2;
-players = 2;
 controllers = 2;
 game_mode = DEFAULT; //or VIRUS
 
@@ -91,7 +90,7 @@ if(room == rm_menu) {
     draw_set_color(c_white);
     var middle_x = room_width div 8
     var middle_y = room_height div 8
-    draw_text(middle_x,middle_y,"Hunter&amp;Prey#&lt;- "+string(teams)+" teams -&gt;##Spacebar to Start");
+    draw_text(middle_x,middle_y,"Hunter&amp;Prey#&lt;- "+string(teams)+" teams -&gt;#"+string(controllers)+" controllers + keyboard##[ Spacebar to Start ]");
 }
 </string>
           </argument>

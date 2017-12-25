@@ -8,6 +8,12 @@
     <sound>sound\snd_death</sound>
     <sound>sound\snd_bounce</sound>
     <sound>sound\snd_charge</sound>
+    <sound>sound\snd_thump</sound>
+    <sound>sound\snd_blip</sound>
+    <sound>sound\snd_blip_high</sound>
+    <sound>sound\snd_rubber</sound>
+    <sound>sound\snd_ouh</sound>
+    <sound>sound\snd_shink</sound>
   </sounds>
   <sprites name="sprites">
     <sprite>sprites\s_chaser</sprite>
