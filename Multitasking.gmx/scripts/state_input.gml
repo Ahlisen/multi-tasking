@@ -1,6 +1,5 @@
-///state_input
-get_controller_input(team, type);
-//image_blend = color;
+///state_input()
+script_execute(input_method,team,type);
 
 if(axis_hor != 0 || axis_ver != 0) {
     dir = round((point_direction(0,0,axis_hor,axis_ver))/90)*90;

@@ -1,4 +1,4 @@
-///get_controller_input(player, type)
+///get_input_controller(player, type)
 var player = argument0;
 var type = argument1;
 if(type == CHASER) {

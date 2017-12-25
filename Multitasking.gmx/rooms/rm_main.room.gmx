@@ -10,7 +10,11 @@
   <persistent>0</persistent>
   <colour>6847106</colour>
   <showcolour>-1</showcolour>
-  <code>if !instance_exists(o_level) {
+  <code>if !instance_exists(o_settings) {
+    instance_create(0,0,o_settings);
+}
+
+if !instance_exists(o_level) {
     instance_create(0,0,o_level);
 }</code>
   <enableViews>-1</enableViews>

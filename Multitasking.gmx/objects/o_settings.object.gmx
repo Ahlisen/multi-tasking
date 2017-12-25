@@ -28,6 +28,7 @@
             <string>///Persistant Variables
 teams = 2;
 players = 2;
+controllers = 2;
 game_mode = DEFAULT; //or VIRUS
 </string>
           </argument>

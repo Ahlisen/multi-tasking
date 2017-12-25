@@ -31,6 +31,7 @@ color = c_white;
 color_charge = c_white;
 type = CHASER;
 state = state_input;
+input_method = get_input_controller;
 previous_state = state;
 dir = 0;
 battery = 0;
