@@ -35,11 +35,14 @@
   <objects name="objects">
     <object>objects\o_mover</object>
     <object>objects\o_level</object>
+    <object>objects\o_settings</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_main</room>
   </rooms>
-  <constants number="7">
+  <constants number="9">
+    <constant name="DEFAULT">0</constant>
+    <constant name="VIRUS">1</constant>
     <constant name="CELL_WIDTH">32</constant>
     <constant name="CELL_HEIGHT">32</constant>
     <constant name="FLOOR">-5</constant>
