@@ -9,9 +9,7 @@ if(axis_hor != 0 || axis_ver != 0) {
     while(temp_length != 0) {
         check_x = xx + lengthdir_x(temp_length, dir);
         check_y = yy + lengthdir_y(temp_length, dir);
-        if(check_x < room_width/CELL_WIDTH && check_x > 0 &&
-        check_y < room_height/CELL_HEIGHT && check_y > 0 && 
-        !grid_place_meeting(check_x,check_y)) {
+        if(grid_place_free(check_x,check_y)) {
             empty = true;
             break;
         }

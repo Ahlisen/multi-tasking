@@ -1,4 +1,4 @@
-///grid_place_meeting(x,y)
+///grid_place_free(x,y)
 var xx = argument0;
 var yy = argument1;
 

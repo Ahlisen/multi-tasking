@@ -5,9 +5,7 @@ var lenx = lengthdir_x(1, dir);
 var leny = lengthdir_y(1, dir);
 check_x = xx + lenx;
 check_y = yy + leny;
-if(check_x < room_width/CELL_WIDTH && check_x > 0 &&
-   check_y < room_height/CELL_HEIGHT && check_y > 0 && 
-   !grid_place_meeting(check_x,check_y)) {
+if(grid_place_free(check_x,check_y)) {
     current_x = x;
     current_y = y;
     target_x = check_x*CELL_WIDTH+CELL_WIDTH/2;
