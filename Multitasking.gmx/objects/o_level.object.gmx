@@ -33,6 +33,9 @@ for(team = 0; team &lt; o_settings.teams; team++) {
 }
 
 display_set_gui_size(room_width,room_height);
+
+width = 0;
+height = 0;
 </string>
           </argument>
         </arguments>
@@ -84,8 +87,8 @@ var grid_size = 32;
 room_width = (CELL_WIDTH/grid_size) * room_width;
 room_height = (CELL_HEIGHT/grid_size) * room_height;
 
-var width = room_width div CELL_WIDTH;
-var height = room_height div CELL_HEIGHT;
+width = room_width div CELL_WIDTH;
+height = room_height div CELL_HEIGHT;
 
 grid = ds_grid_create(width, height);
 ds_grid_set_region(grid, 0, 0, width-1, height-1, VOID);
@@ -177,8 +180,8 @@ for (var yy = 0; yy &lt; height; yy++) {
           <argument>
             <kind>1</kind>
             <string>///Create players
-var width = room_width div CELL_WIDTH;
-var height = room_height div CELL_HEIGHT;
+//var width = room_width div CELL_WIDTH;
+//var height = room_height div CELL_HEIGHT;
 var middle_x = (width div 2)-1;
 var middle_y = (height div 2)-1;
 var color_offset = 0;
@@ -190,7 +193,8 @@ for(team = 0; team &lt; o_settings.teams; team++) {
     if(team == o_settings.teams-1 &amp;&amp; need_keyboard &gt; 0) {input = get_input_keyboard;}
     var prey = create_player(middle_x+(team mod 2), middle_y+(team div 2), PREY, team, input, color_offset);
     var chaser = create_player(middle_x+(team mod 2), middle_y+(team div 2), CHASER, team, input, color_offset);
-    chaser.image_angle = 270;
+    chaser.rotation = 270;
+    team_colors[team] = chaser.color_charge;
 }
 
 //Reset game
@@ -221,10 +225,13 @@ game_over = false;
 draw_set_valign(fa_middle);
 draw_set_halign(fa_center);
 draw_set_font(fnt_main);
-draw_text(16,16,scores[0]);
-draw_text(room_width-16,16,scores[1]);
 
 if(game_over) {
+    for(team = 0; team &lt; array_length_1d(scores); team++) {
+        draw_set_colour(team_colors[team]);
+        draw_text((width-1)*16-0.5+(team mod 2)*32,(height-1)*16-2+(team div 2)*32,scores[team]);
+    }
+    draw_set_colour(c_white);
     draw_text(room_width/2, room_height-16, "&lt; Press Spacebar to Continue &gt;")
 }
 </string>

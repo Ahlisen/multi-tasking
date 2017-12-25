@@ -26,9 +26,10 @@
           <argument>
             <kind>1</kind>
             <string>///Persistant Variables
-teams = 4;
+teams = 3;
 players = 2;
 controllers = 2;
+score_limit = 5*teams;
 game_mode = DEFAULT; //or VIRUS
 </string>
           </argument>
