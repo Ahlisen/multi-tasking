@@ -31,7 +31,7 @@ controllers = 0;
 game_mode = DEFAULT; //or VIRUS
 secondary_keyboard = false;
 
-display_set_gui_size(room_width/4,room_height/4);
+display_set_gui_size(room_width/2,room_height/2);
 
 if(room == rm_menu) {
     state = menu_input;
@@ -87,14 +87,18 @@ script_execute(state);
             <string>///Draw menu
 if(room == rm_menu) {
     draw_set_valign(fa_middle);
-    draw_set_halign(fa_center);
+    //draw_set_halign(fa_center);
     draw_set_font(fnt_main);
     draw_set_color(c_white);
-    var middle_x = room_width div 8
-    var middle_y = room_height div 8
-    draw_text(middle_x,middle_y,"Hunter&amp;Prey#&lt;- "+
+    var middle_x = room_width div 32
+    var middle_y = room_height div 4
+    var instructions = "Hunt prey to reach "+string((teams-1)*5)+" points and win!##"
+    var controls = "#Keyboard: (WASD+LCtrl)+(Arrows+RCtrl)#Secondary Keyboard: (IJKL+B)+(Numpad+0) (+ to activate)#Gamepad: Right &amp; Left Analog + Shoulder buttons"
+    draw_text(middle_x,middle_y,"Hunter&amp;Prey#"+instructions+"&lt;- "+
     string(teams)+" teams -&gt;#"+
-    string(controllers)+" controller(s) + "+string(secondary_keyboard+1)+" keyboard(s)##[ Spacebar to Start ]");
+    string(controllers)+" Gamepad(s) + "+string(secondary_keyboard+1)+" Keyboard(s)#"+controls+"##[ Spacebar to Start ]");
+    
+    //Instructions
 }
 </string>
           </argument>
