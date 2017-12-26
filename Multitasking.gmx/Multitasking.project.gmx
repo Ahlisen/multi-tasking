@@ -33,6 +33,7 @@
     <script>scripts\state_sleep.gml</script>
     <script>scripts\get_input_controller.gml</script>
     <script>scripts\get_input_keyboard.gml</script>
+    <script>scripts\get_input_keyboard_secondary.gml</script>
     <script>scripts\smoothstep.gml</script>
     <script>scripts\grid_place_free.gml</script>
     <script>scripts\create_player.gml</script>

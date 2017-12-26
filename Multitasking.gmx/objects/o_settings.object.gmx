@@ -27,10 +27,12 @@
             <kind>1</kind>
             <string>///Persistant Variables
 teams = 2;
-controllers = 2;
+controllers = 0;
 game_mode = DEFAULT; //or VIRUS
+secondary_keyboard = false;
 
 display_set_gui_size(room_width/4,room_height/4);
+
 if(room == rm_menu) {
     state = menu_input;
 } else {
@@ -90,7 +92,9 @@ if(room == rm_menu) {
     draw_set_color(c_white);
     var middle_x = room_width div 8
     var middle_y = room_height div 8
-    draw_text(middle_x,middle_y,"Hunter&amp;Prey#&lt;- "+string(teams)+" teams -&gt;#"+string(controllers)+" controllers + keyboard##[ Spacebar to Start ]");
+    draw_text(middle_x,middle_y,"Hunter&amp;Prey#&lt;- "+
+    string(teams)+" teams -&gt;#"+
+    string(controllers)+" controller(s) + "+string(secondary_keyboard+1)+" keyboard(s)##[ Spacebar to Start ]");
 }
 </string>
           </argument>

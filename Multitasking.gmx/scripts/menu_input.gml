@@ -11,13 +11,19 @@ if(room == rm_menu) {
     if(keyboard_check_pressed(vk_anykey)) {
         audio_play_sound(snd_thump,2,false);
     }
+    
+    if(keyboard_check_pressed(vk_add)) {
+        secondary_keyboard = !secondary_keyboard;
+    }
 }
 
 if(keyboard_check_released(vk_space)) {
     if(room != room_last) {
         room_goto_next();
     } else {
-        room_restart();
+        if(o_level.game_over) {
+            room_restart();
+        }
     }
 }
 
