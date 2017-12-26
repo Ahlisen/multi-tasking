@@ -30,6 +30,7 @@ teams = 2;
 controllers = 0;
 game_mode = DEFAULT; //or VIRUS
 secondary_keyboard = false;
+secondary_controls = "#Secondary Keyboard: (IJKL+B)+(Numpad+0)";
 plural = '';
 plural_k = '';
 
@@ -94,9 +95,13 @@ if(room == rm_menu) {
     draw_set_color(c_white);
     var middle_x = room_width div 32
     var middle_y = room_height div 4
-
+    var extra = "";
+    if(secondary_keyboard) {
+        extra = secondary_controls;
+    }
+    
     var instructions = "Hunt prey to reach "+string((teams-1)*5)+" points and win!#Works with 2-12 players##"
-    var controls = "#Keyboard: (WASD+LCtrl)+(Arrows+RCtrl)#Secondary Keyboard: (IJKL+B)+(Numpad+0) (+ to activate)#Gamepad: Right &amp; Left Analog + Shoulder buttons"
+    var controls = "#Keyboard: (WASD+LCtrl)+(Arrows+RCtrl)"+extra+"#Gamepad: Right &amp; Left Analog + Shoulder buttons"
     draw_text(middle_x,middle_y,"Symbiotic#"+instructions+"&lt;- "+
     string(teams)+" teams -&gt;#"+
     string(controllers)+" Gamepad"+plural+" + "+string(secondary_keyboard+1)+" Keyboard"+plural_k+"#"+controls+"##[ Spacebar to Start ]");
