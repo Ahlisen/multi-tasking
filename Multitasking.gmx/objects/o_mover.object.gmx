@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>///Variables
 team = 0;
+mate = noone;
 color = c_white;
 color_charge = c_white;
 type = CHASER;
@@ -106,7 +107,12 @@ script_execute(state);
             <kind>1</kind>
             <string>///Check collision of prey or chaser
 if (other.team != team) {
-    if(other.type == PREY &amp;&amp; type == CHASER &amp;&amp; state != state_rotate &amp;&amp; !o_level.game_over) {
+    if(other.type == PREY &amp;&amp; type == CHASER &amp;&amp;
+       state != state_rotate &amp;&amp; state != state_sleep &amp;&amp; !o_level.game_over) {
+        with(other.mate) {
+            state = state_sleep;
+            image_blend = color_sleep;
+        }
         with(other) {
             instance_destroy();
         }
