@@ -30,6 +30,8 @@ teams = 2;
 controllers = 0;
 game_mode = DEFAULT; //or VIRUS
 secondary_keyboard = false;
+plural = '';
+plural_k = '';
 
 display_set_gui_size(room_width/2,room_height/2);
 
@@ -92,11 +94,12 @@ if(room == rm_menu) {
     draw_set_color(c_white);
     var middle_x = room_width div 32
     var middle_y = room_height div 4
-    var instructions = "Hunt prey to reach "+string((teams-1)*5)+" points and win!##"
+
+    var instructions = "Hunt prey to reach "+string((teams-1)*5)+" points and win!#Works with 2-12 players##"
     var controls = "#Keyboard: (WASD+LCtrl)+(Arrows+RCtrl)#Secondary Keyboard: (IJKL+B)+(Numpad+0) (+ to activate)#Gamepad: Right &amp; Left Analog + Shoulder buttons"
-    draw_text(middle_x,middle_y,"Hunter&amp;Prey#"+instructions+"&lt;- "+
+    draw_text(middle_x,middle_y,"Symbiotic#"+instructions+"&lt;- "+
     string(teams)+" teams -&gt;#"+
-    string(controllers)+" Gamepad(s) + "+string(secondary_keyboard+1)+" Keyboard(s)#"+controls+"##[ Spacebar to Start ]");
+    string(controllers)+" Gamepad"+plural+" + "+string(secondary_keyboard+1)+" Keyboard"+plural_k+"#"+controls+"##[ Spacebar to Start ]");
     
     //Instructions
 }
