@@ -132,7 +132,7 @@ repeat(400) {
 var my = height div 2;
 var mx = width div 2;
 for (var x_step = mx-2; x_step &lt; mx+2; x_step++) {
-    for (var y_step = my-2; y_step &lt; my+2; y_step++) {
+    for (var y_step = my-2; y_step &lt; my+ceil(o_settings.teams/2); y_step++) {
         grid[# x_step, y_step] = FLOOR;
     }
 }
