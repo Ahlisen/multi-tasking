@@ -1,4 +1,4 @@
-///create_player(xx, yy, type, team, input, color_offset)
+///create_player(xx, yy, type, team, input, hue)
 
 var px = argument0;
 var py = argument1;
@@ -8,9 +8,8 @@ player.yy = py;
 player.type = argument2;
 player.team = argument3;
 player.input_method = argument4;
+var hue = argument5;
 
-var color_offset = argument5;
-var hue = 50*player.team+color_offset;
 player.color_charge = make_colour_hsv(hue,225,180);
 player.color = make_colour_hsv(hue,145,155);
 player.color_sleep = make_colour_hsv(hue,50,155);
