@@ -32,7 +32,7 @@ if(keyboard_check_released(vk_space)) {
     if(room != room_last) {
         room_goto_next();
     } else {
-        if(!o_level.game_over) {
+        if(o_level.game_over) {
             room_restart();
         }
     }
