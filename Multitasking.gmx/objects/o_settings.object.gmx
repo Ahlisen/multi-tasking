@@ -33,6 +33,7 @@ secondary_keyboard = false;
 secondary_controls = "#Secondary Keyboard: (IJKL+B)+(Numpad+0)";
 plural = '';
 plural_k = '';
+score_per_team = 3;
 
 display_set_gui_size(room_width/2,room_height/2);
 
@@ -101,7 +102,7 @@ if(room == rm_menu) {
     }
     
     //Instructions
-    var instructions = "Hunt prey to reach "+string((teams-1)*5)+" points and win!#Works with 2-12 players##"
+    var instructions = "Hunt prey to reach "+string((teams-1)*score_per_team)+" points and win!#Works with 2-12 players##"
     var controls = "#Keyboard: WASD + LCtrl + Arrows + RCtrl"+extra+"#Gamepad: Right &amp; Left Analog + Shoulder buttons"
     
     draw_text(middle_x, yy, "Symbiotic#"+instructions+"&lt;- "+

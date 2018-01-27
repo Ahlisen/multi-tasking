@@ -58,6 +58,9 @@ bounce_x = 0;
 bounce_y = 0;
 bounce_size_x = 1;
 bounce_size_y = 1;
+
+//Native variables
+image_speed = 0;
 </string>
           </argument>
         </arguments>
@@ -106,26 +109,27 @@ script_execute(state);
           <argument>
             <kind>1</kind>
             <string>///Check collision of prey or chaser
-if (other.team != team) {
-    if(other.type == PREY &amp;&amp; type == CHASER &amp;&amp;
-       state != state_rotate &amp;&amp; state != state_sleep &amp;&amp; !o_level.game_over) {
-        with(other.mate) {
-            state = state_sleep;
-            image_blend = color_sleep;
-        }
-        with(other) {
-            instance_destroy();
-        }
-        audio_play_sound(snd_death, 10, false);
+if(other.type == PREY &amp;&amp; other.state != state_sleep &amp;&amp; type == CHASER &amp;&amp; other.team != team &amp;&amp;
+   state != state_rotate &amp;&amp; state != state_sleep &amp;&amp; !o_level.game_over) {
+   
+    //if (other.team != team) {
         o_level.scores[team]++;
-        if(instance_number(o_mover) == o_settings.teams+1) {
-            o_level.game_over = true;
-            with(o_level) {
-                check_winner();
-            }
-        }
+        audio_play_sound(snd_death, 10, false);
+    //}
+    
+    with(other) {
+        state = state_sleep;
+        image_blend = color_sleep;
+        image_index = 1;    //Dead
     }
+    with(other.mate) {
+        state = state_sleep;
+        image_blend = color_sleep;
+    }
+    
+    check_winner();
 }
+
 </string>
           </argument>
         </arguments>

@@ -33,7 +33,11 @@ if(keyboard_check_released(vk_space)) {
         room_goto_next();
     } else {
         if(o_level.game_over) {
-            room_restart();
+            if(o_level.winner != -1) {
+                game_restart();
+            } else {
+                room_restart();
+            }
         }
     }
 }

@@ -42,6 +42,7 @@
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_main</font>
+    <font>fonts\fnt_other</font>
   </fonts>
   <objects name="objects">
     <object>objects\o_mover</object>

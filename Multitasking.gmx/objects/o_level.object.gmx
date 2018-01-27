@@ -211,7 +211,7 @@ for(team = 0; team &lt; o_settings.teams; team++) {
 
 //Reset game
 game_over = false;
-score_limit = 5*(o_settings.teams-1);
+score_limit = o_settings.score_per_team*(o_settings.teams-1);
 
 if(winner != -1) {
     for(team = 0; team &lt; o_settings.teams; team++) {
@@ -243,21 +243,26 @@ winner = -1;
           <argument>
             <kind>1</kind>
             <string>///Draw GUI (scores, text)
-draw_set_valign(fa_middle);
-draw_set_halign(fa_center);
-draw_set_font(fnt_main);
-
 if(game_over) {
+    draw_set_valign(fa_middle);
+    draw_set_halign(fa_center);
+    draw_set_font(fnt_main);
     for(team = 0; team &lt; array_length_1d(scores); team++) {
         draw_set_colour(team_colors[team]);
         draw_text((width-1)*16-0.5+(team mod 2)*32,(height-1)*16-2+(team div 2)*32,scores[team]);
     }
+    draw_set_font(fnt_other);
     if(winner != -1) {
         draw_set_colour(team_colors[winner]);
-        draw_text(room_width/2, room_height/2-16, "Game Over ("+string(scores[winner])+"/"+string(score_limit)+")");
+        draw_text(room_width/2-1, room_height/2-64, "Game Over: The winners got "+string(scores[winner])+"/"+string(score_limit)+" points!");
+        draw_set_colour(c_white);
+        draw_text(room_width/2+1, room_height/2-48, "Game Over: The winners got "+string(scores[winner])+"/"+string(score_limit)+" points!");
+        draw_text(room_width/2, room_height-16, "&lt; Press Spacebar to End &gt;")
+    } else {
+        draw_set_colour(c_white);
+        draw_text(room_width/2, room_height-16, "&lt; Press Spacebar to Continue &gt;")
     }
-    draw_set_colour(c_white);
-    draw_text(room_width/2, room_height-16, "&lt; Press Spacebar to Continue &gt;")
+    
 }
 </string>
           </argument>
