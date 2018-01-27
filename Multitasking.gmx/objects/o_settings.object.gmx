@@ -30,9 +30,6 @@ teams = 2;
 controllers = 0;
 game_mode = DEFAULT; //or VIRUS
 secondary_keyboard = false;
-secondary_controls = "#Secondary Keyboard: (IJKL+B)+(Numpad+0)";
-plural = '';
-plural_k = '';
 score_per_team = 3;
 
 display_set_gui_size(room_width/2,room_height/2);
@@ -90,24 +87,31 @@ script_execute(state);
             <kind>1</kind>
             <string>///Draw menu
 if(room == rm_menu) {
-    draw_set_valign(fa_middle);
-    //draw_set_halign(fa_center);
-    draw_set_font(fnt_main);
+    draw_set_valign(fa_top);
+    draw_set_halign(fa_center);
     draw_set_color(c_white);
-    var middle_x = room_width div 32
-    var yy = room_height div 4
+    
+    var left_x = room_width div 8
+    var right_x = 64 + room_width div 3
+    var yy = room_height div 8
     var extra = "";
-    if(secondary_keyboard) {
-        extra = secondary_controls;
-    }
     
     //Instructions
-    var instructions = "Hunt prey to reach "+string((teams-1)*score_per_team)+" points and win!#Works with 2-12 players##"
-    var controls = "#Keyboard: WASD + LCtrl + Arrows + RCtrl"+extra+"#Gamepad: Right &amp; Left Analog + Shoulder buttons"
+    var instructions = "2-12 players##Reach "+string((teams-1)*score_per_team)+" points to win!#"
     
-    draw_text(middle_x, yy, "Symbiotic#"+instructions+"&lt;- "+
-    string(teams)+" teams -&gt;#"+
-    string(controllers)+" Gamepad"+plural+" + "+string(secondary_keyboard+1)+" Keyboard"+plural_k+"#"+controls+"##[ Spacebar to Start ]");
+    draw_set_font(fnt_other);
+    draw_text(left_x, yy+48,instructions+"&lt;- "+ string(teams)+" teams -&gt;###[ Spacebar to Start ]");
+    
+    draw_set_font(fnt_main);
+    draw_text(left_x, yy, "Symbiotic");
+    draw_set_valign(fa_middle);
+    draw_text(right_x-80,yy,string(controllers));
+
+    draw_sprite_ext(s_controls,0,right_x,yy+128*0,2,2,0,c_white,max(controllers,0.5));
+    draw_sprite_ext(s_controls,1,right_x,yy+128*1,2,2,0,c_white,1);
+    draw_sprite_ext(s_controls,2,right_x,yy+128*2,2,2,0,c_white,0.5+0.5*secondary_keyboard);
+    draw_set_font(fnt_other);
+    draw_text(right_x,yy+128*2+64,"Plug in another keyboard and press +");
 }
 </string>
           </argument>
