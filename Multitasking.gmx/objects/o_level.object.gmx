@@ -256,7 +256,7 @@ if(game_over) {
         draw_set_colour(team_colors[winner]);
         draw_text(room_width/2-1, room_height/2-64, "Game Over: The winners got "+string(scores[winner])+"/"+string(score_limit)+" points!");
         draw_set_colour(c_white);
-        draw_text(room_width/2+1, room_height/2-48, "Game Over: The winners got "+string(scores[winner])+"/"+string(score_limit)+" points!");
+        draw_text(room_width/2+1, room_height/2-64, "Game Over: The winners got "+string(scores[winner])+"/"+string(score_limit)+" points!");
         draw_text(room_width/2, room_height-16, "&lt; Press Spacebar to End &gt;")
     } else {
         draw_set_colour(c_white);
