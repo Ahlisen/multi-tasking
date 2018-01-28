@@ -60,6 +60,7 @@ bounce_x = 0;
 bounce_y = 0;
 bounce_size_x = 1;
 bounce_size_y = 1;
+counter = false;
 
 //Native variables
 image_speed = 0;
@@ -111,25 +112,46 @@ script_execute(state);
           <argument>
             <kind>1</kind>
             <string>///Check collision of prey or chaser
-if(other.type == PREY &amp;&amp; other.state != state_sleep &amp;&amp; type == CHASER &amp;&amp; other.team != team &amp;&amp;
+if(other.type == PREY &amp;&amp; other.state != state_sleep &amp;&amp; type == CHASER &amp;&amp; 
    state != state_rotate &amp;&amp; state != state_sleep &amp;&amp; !o_level.game_over) {
+   var kill = false;
    
-    //if (other.team != team) {
-        o_level.scores[team]++;
+    if state = state_charging {
+        if other.state == state_counter {
+            if other.counter {
+                other.counter = false;
+                xx = x div CELL_WIDTH;
+                yy = y div CELL_HEIGHT;
+                animation = 0;
+                //audio_play_sound(snd_charge, 5, false);
+                prepare_to_move(dir+90, 50, state_charging);
+            } 
+        } else  {
+            kill = true;
+        }
+        
+    } else if other.team != team {
+        kill = true;
+    }
+    
+    if (kill) {
+        if other.team != team {
+            o_level.scores[team]++;
+        }
         audio_play_sound(snd_death, 10, false);
-    //}
-    
-    with(other) {
-        state = state_sleep;
-        image_blend = color_sleep;
-        image_index = 1;    //Dead
+        with(other) {
+            state = state_sleep;
+            image_blend = color_sleep;
+            image_index = 1;    //Dead
+        }
+        with(other.mate) {
+            state = state_sleep;
+            image_blend = color_sleep;
+        }
+        check_winner();
     }
-    with(other.mate) {
-        state = state_sleep;
-        image_blend = color_sleep;
-    }
     
-    check_winner();
+    
 }
 
 </string>

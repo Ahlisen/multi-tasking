@@ -1,12 +1,14 @@
 ///prepare_to_move(dir, steps, state)
-var dir_ = argument0;
+dir = argument0;
+image_angle = dir;
+
 var steps_ = argument1;
 var state_ = argument2;
 var length = 1;
 
 while(true) {
-    var check_x = xx + lengthdir_x(length, dir_);
-    var check_y = yy + lengthdir_y(length, dir_);
+    var check_x = xx + lengthdir_x(length, dir);
+    var check_y = yy + lengthdir_y(length, dir);
     if(grid_place_free(check_x,check_y) && length <= steps_) {
         length++;
     } else {
@@ -15,8 +17,9 @@ while(true) {
 }
 
 length--;
-check_x = xx + lengthdir_x(length, dir_);
-check_y = yy + lengthdir_y(length, dir_);
+check_x = xx + lengthdir_x(length, dir);
+check_y = yy + lengthdir_y(length, dir);
+animation = 0;
 
 if(length > 0) {
     current_x = x;
@@ -27,8 +30,8 @@ if(length > 0) {
     state = state_;
 } else {
     animation_multiplier = 1;
-    bounce_x = 2*lengthdir_x(1, dir_);
-    bounce_y = 2*lengthdir_y(1, dir_);
+    bounce_x = 2*lengthdir_x(1, dir);
+    bounce_y = 2*lengthdir_y(1, dir);
     bounce_size_x = power(0.9, 1);
     bounce_size_y = power(1.05, 1);
     state = state_collision;

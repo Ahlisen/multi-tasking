@@ -8,6 +8,7 @@ if(animation < 1) {
         image_blend = color;
     }
 } else {
+    counter = false;
     rotation = 0;
     image_angle = 0;
     state = state_input;
