@@ -1,4 +1,11 @@
 ///state_moving()
+script_execute(input_method,team,type);
+if (special_input) {
+    image_blend = c_black;
+} else {
+    image_blend = color;
+}
+
 if(animation < 1) {
     x = lerp(current_x, target_x, smoothstep(animation));
     y = lerp(current_y, target_y, smoothstep(animation));
