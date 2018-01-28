@@ -27,11 +27,15 @@
             <kind>1</kind>
             <string>///Persistant Variables
 teams = 2;
+color_offset = floor(255/(teams*2));
 controllers = 0;
 game_mode = DEFAULT; //or VIRUS
 secondary_keyboard = false;
 score_per_team = 3;
 alternate_color = irandom(1);
+hue = alternate_color*color_offset+irandom(color_offset);
+color = make_colour_hsv(hue,225,180);
+
 
 display_set_gui_size(room_width/2,room_height/2);
 
@@ -39,6 +43,35 @@ if(room == rm_menu) {
     state = menu_input;
 } else {
     state = state_sleep;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Change color of title
+if room == rm_menu {
+    var team = irandom(teams);
+    hue = alternate_color*color_offset+2*color_offset*team+irandom(color_offset);
+    color = make_colour_hsv(hue,225,180);
+    alarm[0] = room_speed;
 }
 </string>
           </argument>
@@ -64,6 +97,30 @@ if(room == rm_menu) {
             <kind>1</kind>
             <string>///State
 script_execute(state);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Start color for title timer
+alarm[0] = room_speed;
 </string>
           </argument>
         </arguments>
@@ -104,6 +161,9 @@ if(room == rm_menu) {
     draw_text(left_x, yy+48,instructions+"&lt;- "+ string(teams)+" teams -&gt;###[ Spacebar to Start ]");
     
     draw_set_font(fnt_main);
+    draw_set_color(color);
+    draw_text(left_x-1, yy, "Symbiotic");
+    draw_set_color(c_white);
     draw_text(left_x, yy, "Symbiotic");
     draw_set_valign(fa_middle);
     draw_text(right_x-80,yy,string(controllers));

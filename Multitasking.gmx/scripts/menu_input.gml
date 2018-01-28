@@ -15,6 +15,8 @@ if(room == rm_menu) {
     
     teams += keyboard_check_pressed(vk_right) - keyboard_check_pressed(vk_left);
     teams = clamp(teams, 2, 6/*(1+secondary_keyboard+controllers)*/);
+    color_offset = floor(255/(teams*2));
+    
 }
 
 if(keyboard_check_released(vk_space)) {
