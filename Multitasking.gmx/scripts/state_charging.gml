@@ -25,7 +25,7 @@ if(animation < 1) {
             animation_multiplier++;
         }
         image_angle = dir;
-        audio_play_sound(snd_charge, 5, false);
+        audio_play_sound(snd_rubber, 5, false);
         prepare_to_move(dir, 50, state_charging);
     } else {
         //Bounce

@@ -138,7 +138,7 @@ if(other.type == PREY &amp;&amp; other.state != state_sleep &amp;&amp; type == C
             o_level.scores[team]++;
             audio_play_sound(snd_death, 10, false);
         } else {
-            audio_play_sound(snd_rubber, 10, false);
+            audio_play_sound(snd_shink, 10, false);
         }
         with(other) {
             state = state_sleep;

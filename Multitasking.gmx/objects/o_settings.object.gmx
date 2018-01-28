@@ -31,6 +31,7 @@ controllers = 0;
 game_mode = DEFAULT; //or VIRUS
 secondary_keyboard = false;
 score_per_team = 3;
+alternate_color = irandom(1);
 
 display_set_gui_size(room_width/2,room_height/2);
 
