@@ -10,7 +10,7 @@ player.team = argument3;
 player.input_method = argument4;
 var hue = argument5;
 
-player.color_charge = make_colour_hsv(hue,225,180);
+player.color_charge = make_colour_hsv(hue,225,200);
 player.color = make_colour_hsv(hue,145,155);
 player.color_sleep = make_colour_hsv(hue,50,155);
 

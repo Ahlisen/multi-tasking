@@ -70,7 +70,7 @@ if(room == rm_menu) {
 if room == rm_menu {
     var team = irandom(teams);
     hue = alternate_color*color_offset+2*color_offset*team+irandom(color_offset);
-    color = make_colour_hsv(hue,225,180);
+    color = make_colour_hsv(hue,225,200);
     alarm[0] = room_speed;
 }
 </string>
