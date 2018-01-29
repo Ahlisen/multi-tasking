@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>///Persistant Variables
 teams = 2;
+availible_players = 1;
 color_offset = floor(255/(teams*2));
 controllers = 0;
 game_mode = DEFAULT; //or VIRUS
@@ -35,7 +36,6 @@ score_per_team = 3;
 alternate_color = irandom(1);
 hue = alternate_color*color_offset+irandom(color_offset);
 color = make_colour_hsv(hue,225,180);
-
 
 display_set_gui_size(room_width/2,room_height/2);
 

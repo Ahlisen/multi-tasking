@@ -15,6 +15,6 @@ if(animation < 1) {
     y = target_y;
     xx = (target_x-CELL_WIDTH div 2) div CELL_WIDTH;
     yy = (target_y-CELL_HEIGHT div 2) div CELL_HEIGHT;
-    state = previous_state;
+    state = std_state;
     image_blend = color;
 }

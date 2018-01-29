@@ -11,5 +11,5 @@ if(animation < 1) {
     counter = false;
     rotation = 0;
     image_angle = 0;
-    state = state_input;
+    state = std_state;
 }

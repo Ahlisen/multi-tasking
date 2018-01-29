@@ -32,9 +32,10 @@ color = c_white;
 color_charge = c_white;
 type = CHASER;
 state = state_input;
+std_state = state;
 input_method = get_input_controller;
 collision_sound = snd_bounce;
-previous_state = state;
+
 dir = 0;
 battery = 0;
 battery_max = 3;

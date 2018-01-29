@@ -4,7 +4,7 @@ if(animation != 1) {
     animation += animation_speed/2;
 } else {
     if(battery == battery_max) {
-        state = state_input;
+        state = std_state;
         if(type = PREY) {
             image_blend = color_charge;
             move_length = 2;

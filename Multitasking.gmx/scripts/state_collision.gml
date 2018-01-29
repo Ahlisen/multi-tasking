@@ -6,8 +6,7 @@ if(animation < 1) {
     image_yscale = lerp(bounce_size_y, 1, smoothstep(animation));
     animation += animation_speed;
 } else {
-    state = state_input;
-    previous_state = state;
+    state = std_state;
     offset_x = 0;
     offset_y = 0;
     animation = 0;

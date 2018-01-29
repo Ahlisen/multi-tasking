@@ -216,14 +216,28 @@ var middle_y = (height div 2)-1;
 var color_offset = floor(255/(o_settings.teams*2));
 var need_keyboard = o_settings.teams - o_settings.controllers;
 var input = get_input_controller;
+var controllers = o_settings.controllers;
+var players = o_settings.availible_players;
 
 for(team = 0; team &lt; o_settings.teams; team++) {
-    if(team == o_settings.teams-1 &amp;&amp; need_keyboard &gt; 0) {
-        input = get_input_keyboard;
+    var ai = false;
+    if(controllers &gt; 0) {
+        input = get_input_controller;
+        controllers--;
+        players--;
+    } else {
+        if(players &gt; 0) {
+            if players == 2 {
+                input = get_input_keyboard_secondary;
+            } else {
+                input = get_input_keyboard;
+            }
+            players--;
+        } else {
+            input = get_input_ai_easy;
+        }
     }
-    if(team == o_settings.teams-2 &amp;&amp; need_keyboard &gt; 1 &amp;&amp; o_settings.secondary_keyboard) {
-        input = get_input_keyboard_secondary;
-    }
+
     var hue = o_settings.alternate_color*color_offset+2*color_offset*team+irandom(color_offset);
     var prey = create_player(middle_x+(team mod 2), middle_y+(team div 2), PREY, team, input, hue);
     prey.collision_sound = snd_thump;
