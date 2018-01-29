@@ -145,10 +145,16 @@ for (var step = mx; step &lt; mx+1; step++) {
 for (var yy = 1; yy &lt; height-1; yy++) {
     for (var xx = 1; xx &lt; width-1; xx++) {
         if(grid[# xx, yy] == FLOOR) {
-            if(grid[# xx+1, yy] != FLOOR) grid[# xx+1, yy] = WALL;
-            if(grid[# xx-1, yy] != FLOOR) grid[# xx-1, yy] = WALL;
-            if(grid[# xx, yy+1] != FLOOR) grid[# xx, yy+1] = WALL;
-            if(grid[# xx, yy-1] != FLOOR) grid[# xx, yy-1] = WALL;
+            var count_x = 0;
+            var count_y = 0;
+            if(grid[# xx+1, yy] != FLOOR &amp;&amp; grid[# xx+1, yy] != CORNER) {grid[# xx+1, yy] = WALL;} else {count_x++;}
+            if(grid[# xx-1, yy] != FLOOR &amp;&amp; grid[# xx-1, yy] != CORNER) {grid[# xx-1, yy] = WALL;} else {count_x++;}
+            if(grid[# xx, yy+1] != FLOOR &amp;&amp; grid[# xx, yy+1] != CORNER) {grid[# xx, yy+1] = WALL;} else {count_y++;}
+            if(grid[# xx, yy-1] != FLOOR &amp;&amp; grid[# xx, yy-1] != CORNER) {grid[# xx, yy-1] = WALL;} else {count_y++;}
+            
+            if(count_x == 1 &amp;&amp; count_y == 1) {
+                grid[# xx, yy] = CORNER;
+            }
         }
     }
 }
@@ -159,6 +165,26 @@ for (var yy = 0; yy &lt; height; yy++) {
             tile_add(bg_floor, 0, 0, CELL_WIDTH, CELL_HEIGHT, xx*CELL_WIDTH, yy*CELL_HEIGHT, 0);
         } else if (grid[# xx, yy] == WALL){
             tile_add(bg_wall, 0, 0, CELL_WIDTH, CELL_HEIGHT, xx*CELL_WIDTH, yy*CELL_HEIGHT, 0);
+        } else if (grid[# xx, yy] == CORNER) {
+        
+            var right = (grid[# xx+1, yy] == FLOOR || grid[# xx+1, yy] == CORNER)
+            var left =  (grid[# xx-1, yy] == FLOOR || grid[# xx-1, yy] == CORNER)
+            var down =  (grid[# xx, yy+1] == FLOOR || grid[# xx, yy+1] == CORNER)
+            var up  =   (grid[# xx, yy-1] == FLOOR || grid[# xx, yy-1] == CORNER)
+        
+            if(right) {
+                if(down) {
+                    tile_add(bg_corner, CELL_WIDTH, CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT, xx*CELL_WIDTH, yy*CELL_HEIGHT, 0);
+                } else {
+                    tile_add(bg_corner, CELL_WIDTH, 0, CELL_WIDTH, CELL_HEIGHT, xx*CELL_WIDTH, yy*CELL_HEIGHT, 0);
+                }
+            } else {
+                if(down) {
+                    tile_add(bg_corner, 0, CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT, xx*CELL_WIDTH, yy*CELL_HEIGHT, 0);
+                } else {
+                    tile_add(bg_corner, 0, 0, CELL_WIDTH, CELL_HEIGHT, xx*CELL_WIDTH, yy*CELL_HEIGHT, 0);
+                }
+            }
         }
     }
 }

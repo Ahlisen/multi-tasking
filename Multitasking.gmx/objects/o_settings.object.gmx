@@ -172,7 +172,7 @@ if(room == rm_menu) {
     draw_sprite_ext(s_controls,1,right_x,yy+128*1,2,2,0,c_white,1);
     draw_sprite_ext(s_controls,2,right_x,yy+128*2,2,2,0,c_white,0.5+0.5*secondary_keyboard);
     draw_set_font(fnt_other);
-    draw_text(right_x,yy+128*2+64,"Plug in another keyboard and press +");
+    draw_text(right_x,yy+128*2+64,"Press +");
 }
 </string>
           </argument>

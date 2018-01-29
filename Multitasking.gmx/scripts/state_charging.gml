@@ -37,6 +37,7 @@ if(animation < 1) {
         state = state_collision;
         audio_play_sound(collision_sound,0,false);
         image_blend = color;
+        image_index = 0;
     }
 }
 
