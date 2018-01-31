@@ -34,6 +34,7 @@
     <script>scripts\state_rotate.gml</script>
     <script>scripts\state_counter.gml</script>
     <script>scripts\state_sleep.gml</script>
+    <script>scripts\prepare_to_move.gml</script>
     <script>scripts\get_input_ai_easy.gml</script>
     <script>scripts\get_input_controller.gml</script>
     <script>scripts\get_input_keyboard.gml</script>
@@ -43,7 +44,6 @@
     <script>scripts\create_player.gml</script>
     <script>scripts\check_winner.gml</script>
     <script>scripts\menu_input.gml</script>
-    <script>scripts\prepare_to_move.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_main</font>
