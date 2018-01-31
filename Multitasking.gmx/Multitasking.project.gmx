@@ -24,6 +24,7 @@
     <background>background\bg_floor</background>
     <background>background\bg_wall</background>
     <background>background\bg_corner</background>
+    <background>background\bg_menu</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
@@ -58,7 +59,7 @@
     <room>rooms\rm_menu</room>
     <room>rooms\rm_main</room>
   </rooms>
-  <constants number="10">
+  <constants number="12">
     <constant name="DEFAULT">0</constant>
     <constant name="VIRUS">1</constant>
     <constant name="CELL_WIDTH">32</constant>
@@ -69,6 +70,8 @@
     <constant name="CORNER">-8</constant>
     <constant name="CHASER">0</constant>
     <constant name="PREY">1</constant>
+    <constant name="TEAMS">0</constant>
+    <constant name="CORNERS">1</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

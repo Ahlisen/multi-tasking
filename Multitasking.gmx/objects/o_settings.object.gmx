@@ -25,8 +25,52 @@
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>///Create menu array
+current_index = 0;
+
+current_selection[TEAMS] = 1;   //teams
+current_selection[CORNERS] = 2;   //corners
+current_selection[2] = 2;   //ai
+
+//Teams
+menu[TEAMS,0] = "Symbiotics";
+for(var i = 1; i&lt;6; i++) {
+    menu[TEAMS,i] = i+1;
+}
+//Corners
+menu[CORNERS,0] = "Corners";
+menu[CORNERS,1] = "0%";
+menu[CORNERS,2] = "50%";
+menu[CORNERS,3] = "100%";
+
+//AI
+menu[2,0] = "AI";
+menu[2,1] = "Easy";
+menu[2,2] = "Medium";
+menu[2,3] = "Hard";
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>///Persistant Variables
 teams = 2;
+corners = 3;
 availible_players = 1;
 color_offset = floor(255/(teams*2));
 controllers = 0;
@@ -44,6 +88,9 @@ if(room == rm_menu) {
 } else {
     state = state_sleep;
 }
+
+//Randomize
+randomize();
 </string>
           </argument>
         </arguments>
@@ -152,13 +199,22 @@ if(room == rm_menu) {
     var left_x = room_width div 8
     var right_x = 64 + room_width div 3
     var yy = room_height div 8
+    
     var extra = "";
+    for(var i = 0; i&lt;array_height_2d(menu); i++) {
+        var ind = current_selection[i];
+        if(current_index == i) {
+            extra += "&lt;- " + string(menu[i,0]) + " : " + string(menu[i,ind]) + " -&gt;#";
+        } else {
+            extra += string(menu[i,0]) + " : " + string(menu[i,ind]) + "#";
+        }
+    }
     
     //Instructions
-    var instructions = "2-12 players##Reach "+string((teams-1)*score_per_team)+" points to win!#"
+    var instructions = "2-12 players#First to "+string((menu[0,current_selection[TEAMS]]-1)*score_per_team)+" points wins!##"
     
     draw_set_font(fnt_other);
-    draw_text(left_x, yy+48,instructions+"&lt;- "+ string(teams)+" teams -&gt;###[ Spacebar to Start ]");
+    draw_text(left_x, yy+48,instructions+extra+"#[ Spacebar to Start ]"); //&lt;- "+ string(teams)+" teams -&gt;
     
     draw_set_font(fnt_main);
     draw_set_color(color);

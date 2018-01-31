@@ -124,7 +124,8 @@ if(other.type == PREY &amp;&amp; other.state != state_sleep &amp;&amp; type == C
                 xx = x div CELL_WIDTH;
                 yy = y div CELL_HEIGHT;
                 animation = 0;
-                audio_play_sound(snd_ouh, 5, false);
+                animation_multiplier++;
+                audio_play_sound(snd_shink, 5, false);
                 prepare_to_move(dir+90, 50, state_charging);
             } 
         } else  {
