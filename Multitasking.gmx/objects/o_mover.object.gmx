@@ -146,13 +146,13 @@ if(other.type == PREY &amp;&amp; other.state != state_sleep &amp;&amp; type == C
             state = state_sleep;
             image_blend = color_sleep;
             image_index = 1;    //Dead
-            depth = 10;
+            depth = 5;
         }
         with(other.mate) {
             state = state_sleep;
             image_blend = color_sleep;
             image_index = 1;    //Dead
-            depth = 10;
+            depth = 5;
         }
         check_winner();
     }

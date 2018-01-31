@@ -190,9 +190,9 @@ for (var yy = 1; yy &lt; height-1; yy++) {
 for (var yy = 0; yy &lt; height; yy++) {
     for (var xx = 0; xx &lt; width; xx++) {
         if (grid [# xx, yy] == FLOOR) {
-            tile_add(bg_floor, 0, 0, CELL_WIDTH, CELL_HEIGHT, xx*CELL_WIDTH, yy*CELL_HEIGHT, 0);
+            tile_add(bg_floor, 0, 0, CELL_WIDTH, CELL_HEIGHT, xx*CELL_WIDTH, yy*CELL_HEIGHT, 10);
         } else if (grid[# xx, yy] == WALL){
-            tile_add(bg_wall, 0, 0, CELL_WIDTH, CELL_HEIGHT, xx*CELL_WIDTH, yy*CELL_HEIGHT, 0);
+            tile_add(bg_wall, 0, 0, CELL_WIDTH, CELL_HEIGHT, xx*CELL_WIDTH, yy*CELL_HEIGHT, 10);
         } else if (grid[# xx, yy] == CORNER) {
         
             var right = (grid[# xx+1, yy] == FLOOR || grid[# xx+1, yy] == CORNER)
@@ -202,15 +202,15 @@ for (var yy = 0; yy &lt; height; yy++) {
         
             if(right) {
                 if(down) {
-                    tile_add(bg_corner, CELL_WIDTH, CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT, xx*CELL_WIDTH, yy*CELL_HEIGHT, 0);
+                    tile_add(bg_corner, CELL_WIDTH, CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT, xx*CELL_WIDTH, yy*CELL_HEIGHT, -10);
                 } else {
-                    tile_add(bg_corner, CELL_WIDTH, 0, CELL_WIDTH, CELL_HEIGHT, xx*CELL_WIDTH, yy*CELL_HEIGHT, 0);
+                    tile_add(bg_corner, CELL_WIDTH, 0, CELL_WIDTH, CELL_HEIGHT, xx*CELL_WIDTH, yy*CELL_HEIGHT, -10);
                 }
             } else {
                 if(down) {
-                    tile_add(bg_corner, 0, CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT, xx*CELL_WIDTH, yy*CELL_HEIGHT, 0);
+                    tile_add(bg_corner, 0, CELL_HEIGHT, CELL_WIDTH, CELL_HEIGHT, xx*CELL_WIDTH, yy*CELL_HEIGHT, -10);
                 } else {
-                    tile_add(bg_corner, 0, 0, CELL_WIDTH, CELL_HEIGHT, xx*CELL_WIDTH, yy*CELL_HEIGHT, 0);
+                    tile_add(bg_corner, 0, 0, CELL_WIDTH, CELL_HEIGHT, xx*CELL_WIDTH, yy*CELL_HEIGHT, -10);
                 }
             }
         }
