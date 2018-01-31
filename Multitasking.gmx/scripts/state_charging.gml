@@ -15,7 +15,7 @@ if(animation < 1) {
     var left = grid_place_free(xx+lengthdir_x(1,dir-90),yy+lengthdir_y(1,dir-90));
     var right = grid_place_free(xx+lengthdir_x(1,dir+90),yy+lengthdir_y(1,dir+90));
     
-    if(left ^^ right) {
+    if(left ^^ right && o_level.grid[# xx, yy] == CORNER) {
         if(left) {
             dir = dir-90;
         } else {

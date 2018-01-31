@@ -222,7 +222,7 @@ if(room == rm_menu) {
     draw_set_color(c_white);
     draw_text(left_x, yy, "Symbiotic");
     draw_set_valign(fa_middle);
-    draw_text(right_x-80,yy,string(controllers));
+    //draw_text(right_x-128,yy,string(controllers));
 
     draw_sprite_ext(s_controls,0,right_x,yy+128*0,2,2,0,c_white,max(controllers,0.5));
     draw_sprite_ext(s_controls,1,right_x,yy+128*1,2,2,0,c_white,1);
