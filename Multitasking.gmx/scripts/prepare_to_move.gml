@@ -36,4 +36,7 @@ if(length > 0) {
     bounce_size_y = power(1.05, 1);
     state = state_collision;
     audio_play_sound(collision_sound,0,false);
+    
+    image_index = 0;
+    image_blend = color;
 }
