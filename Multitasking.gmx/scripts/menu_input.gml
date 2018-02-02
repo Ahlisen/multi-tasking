@@ -1,8 +1,8 @@
 if(room == rm_menu) {
-    controllers = 0;
+    players[CONTROLLERS] = 0;
     var gp_num = gamepad_get_device_count();
     for (var i = 0; i < gp_num; i++;){
-        if gamepad_is_connected(i) controllers++;
+        if gamepad_is_connected(i) players[CONTROLLERS]++;
     }
     
     if(keyboard_check_pressed(vk_anykey)) {
@@ -10,7 +10,7 @@ if(room == rm_menu) {
     }
     
     if(keyboard_check_pressed(vk_add)) {
-        secondary_keyboard = !secondary_keyboard;
+        players[KEYBOARD_2] = !players[KEYBOARD_2];
     }
     
     current_index += keyboard_check_pressed(vk_down) - keyboard_check_pressed(vk_up);
@@ -22,6 +22,7 @@ if(room == rm_menu) {
     //teams = clamp(teams, 2, 6/*(1+secondary_keyboard+controllers)*/);
     availible_players = 1+secondary_keyboard+controllers;
     color_offset = floor(255/(teams*2));
+    players[AI] = 6-players[CONTROLLERS]-players[KEYBOARD_1]-players[KEYBOARD_2];
 }
 
 if(keyboard_check_released(vk_space)) {

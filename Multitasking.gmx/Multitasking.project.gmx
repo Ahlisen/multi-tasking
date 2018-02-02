@@ -18,6 +18,7 @@
   <sprites name="sprites">
     <sprite>sprites\s_chaser</sprite>
     <sprite>sprites\s_prey</sprite>
+    <sprite>sprites\s_mobs_mini</sprite>
     <sprite>sprites\s_controls</sprite>
   </sprites>
   <backgrounds name="background">
@@ -59,7 +60,7 @@
     <room>rooms\rm_menu</room>
     <room>rooms\rm_main</room>
   </rooms>
-  <constants number="12">
+  <constants number="16">
     <constant name="DEFAULT">0</constant>
     <constant name="VIRUS">1</constant>
     <constant name="CELL_WIDTH">32</constant>
@@ -72,6 +73,10 @@
     <constant name="PREY">1</constant>
     <constant name="TEAMS">0</constant>
     <constant name="CORNERS">1</constant>
+    <constant name="CONTROLLERS">0</constant>
+    <constant name="KEYBOARD_1">1</constant>
+    <constant name="KEYBOARD_2">2</constant>
+    <constant name="AI">3</constant>
   </constants>
   <help>
     <rtf>help.rtf</rtf>

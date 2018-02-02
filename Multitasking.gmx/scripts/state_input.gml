@@ -17,7 +17,7 @@ if (special_input && type == PREY){
         image_blend = color_charge;
         audio_play_sound(snd_charge, 5, false);
         animation_multiplier = 2;
-        image_index = 2;
+        //image_index = 2;  //Arrow-figure
         prepare_to_move(dir, 50, state_charging)
     } else {
         prepare_to_move(dir, 1, state_moving)

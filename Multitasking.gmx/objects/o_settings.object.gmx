@@ -89,6 +89,16 @@ if(room == rm_menu) {
     state = state_sleep;
 }
 
+players[CONTROLLERS] = controllers;
+players[KEYBOARD_1] = 1;
+players[KEYBOARD_2] = secondary_keyboard;
+players[AI] = 0;
+
+possible_players[CONTROLLERS] = 4;
+possible_players[KEYBOARD_1] = 1;
+possible_players[KEYBOARD_2] = 1;
+possible_players[AI] = 5;
+
 //Randomize
 randomize();
 </string>
@@ -192,13 +202,13 @@ alarm[0] = room_speed;
             <kind>1</kind>
             <string>///Draw menu
 if(room == rm_menu) {
-    draw_set_valign(fa_top);
+    draw_set_valign(fa_middle);
     draw_set_halign(fa_center);
     draw_set_color(c_white);
     
     var left_x = room_width div 8
     var right_x = 64 + room_width div 3
-    var yy = room_height div 8
+    var yy = room_height div 4
     
     var extra = "";
     for(var i = 0; i&lt;array_height_2d(menu); i++) {
@@ -210,25 +220,44 @@ if(room == rm_menu) {
         }
     }
     
+    var teams_left = menu[TEAMS,current_selection[TEAMS]]
     //Instructions
-    var instructions = "2-12 players#First to "+string((menu[0,current_selection[TEAMS]]-1)*score_per_team)+" points wins!##"
+    var instructions = ".##2-12 players#First to "+string((teams_left-1)*score_per_team)+" points wins!##"
     
     draw_set_font(fnt_other);
-    draw_text(left_x, yy+48,instructions+extra+"#[ Spacebar to Start ]"); //&lt;- "+ string(teams)+" teams -&gt;
+    draw_text(left_x, yy,instructions+extra+"#[ Spacebar to Start ]"); //&lt;- "+ string(teams)+" teams -&gt;
     
     draw_set_font(fnt_main);
     draw_set_color(color);
-    draw_text(left_x-1, yy, "Symbiotic");
+    draw_text(left_x-1, yy-140, "Symbiotic");
     draw_set_color(c_white);
-    draw_text(left_x, yy, "Symbiotic");
+    draw_text(left_x, yy-140, "Symbiotic");
     draw_set_valign(fa_middle);
     //draw_text(right_x-128,yy,string(controllers));
-
-    draw_sprite_ext(s_controls,0,right_x,yy+128*0,2,2,0,c_white,max(controllers,0.5));
+    
+    var players_left = teams_left;
+    var yy2 = yy div 2 - yy div 4;
+    var offset_y = yy div 2;
+    for(var i = 0; i&lt;4; i++) {
+        draw_sprite_ext(s_controls,i,right_x,yy2+offset_y*i,2,2,0,c_white,1);
+        var offset_x = 16*((possible_players[i]/2)-0.5);
+        for(var j = 0; j&lt;possible_players[i]; j++) {
+            var active = false;
+            if(j &lt; players[i] &amp;&amp; players_left &gt; 0) {
+                active = true;
+                players_left--;
+            }
+            draw_sprite_ext(s_mobs_mini,active,(j)*16+right_x-160-offset_x,yy2+offset_y*i,2,2,0,c_white,1);
+            draw_sprite_ext(s_mobs_mini,active+2,(j)*16+right_x+160-offset_x,yy2+offset_y*i,2,2,0,c_white,1);
+        }
+    }
+    
+    /*draw_sprite_ext(s_controls,0,right_x,yy+128*0,2,2,0,c_white,max(controllers,0.5));
     draw_sprite_ext(s_controls,1,right_x,yy+128*1,2,2,0,c_white,1);
     draw_sprite_ext(s_controls,2,right_x,yy+128*2,2,2,0,c_white,0.5+0.5*secondary_keyboard);
     draw_set_font(fnt_other);
     draw_text(right_x,yy+128*2+64,"Press +");
+    */
 }
 </string>
           </argument>
